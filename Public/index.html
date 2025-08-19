@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT MANAGEMENT FORM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+     <h1>Student Management</h1>
+     <button class="open-button" onclick="openForm()">Add New Student</button>
+  </div>
+
+<section>
+<div class="searchSection">
+  <input type="text" id="searchUID">
+  <button onclick="loadAndRenderStudents()" class="search-icon"></button>
+</div>
+
+
+  <table id="personTable" border="1" >
+    <thead>
+      <tr>
+        <th>UID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+</table>
+
+
+  <!-- Add Student Form -->
+  <div id="popupForm">
+
+      <h3 id="formTitle">Add New Student</h3>
+
+     <form onsubmit="addPerson(event)">
+       <label>Full Name:<br><br> <input type="text" id="name" required></label><br><br>
+       <label>Email: <br><br><input type="email" id="email" required></label><br><br>
+       <label>Phone Number:<br><br><input type="tel" id="phone" placeholder="" required></label><br><br>
+       <label>Date of Birth:<br><br><input type="date" id="dob" required></label><br><br>
+       <button class="btn" type="submit">Save</button>
+       <button class="btn"type="button" onclick="closeForm()">Cancel</button>
+    </form>
+  </div>
+
+
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closePopupModal()">&times;</span>
+    <div id="popupContent"></div>
+  </div>
+</div>
+
+
+ <!-- <div id="deletePopupModal">
+  <div id="deletePopupContent"></div>
+</div>  -->
+
+<!-- hidden) -->
+<div id="overlay"></div>
+
+
+<!-- Main content -->
+<div id="mainContent">
+
+</div>
+
+
+</section>
+ <script src="script.js"></script>
+</body>
+</html>
+
+
