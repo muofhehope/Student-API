@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql'); 
@@ -7,7 +11,7 @@ const { v4: uuidv4 } = require('uuid');
  
 const app = express();
 
-const PORT = 3500;
+const PORT = process.env.PORT || 3500;
 
 app.use(cors({}));
   
@@ -17,11 +21,12 @@ app.use(bodyParser.json());
 
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',         
-  password: 'Muofhe@20',           
-  database: 'student_api_db'   
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,         
+  password: process.env.DB_PASSWORD,           
+  database: process.env.DB_NAME   
 });
+
 
 // Connect to DB
 db.connect((err) => {
